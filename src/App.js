@@ -7,6 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { LoginPage, PrivateRoute } from "./components/auth/";
+import { AdvertsPage, NewAdPage } from "./components/adverts/";
 import { AuthContextProvider } from "./components/auth/context";
 import { useState } from "react";
 import { logout } from "./components/auth/service";
@@ -30,21 +31,20 @@ function App({ isInitiallyLogged }) {
             <Route path="/login">
               {(routeProps) => <LoginPage {...routeProps} />}
             </Route>
-            {/* <PrivateRoute path="/tweets/new">
-              <NewAdPage />
-            </PrivateRoute> */}
 
-            <PrivateRoute path="/adverts">
-              <LoginPage />
+            <PrivateRoute path="/new-advert">
+              <NewAdPage />
             </PrivateRoute>
 
-            {/* <Route path="/tweets/:tweetId">
-              {(routeProps) => (
-                <TweetPage ref={tweetPageInstance} {...routeProps} />
-              )}
-            </Route> */}
+            {/* 
+              <Route path="/tweets/:tweetId">
+                {(routeProps) => (
+                  <TweetPage ref={tweetPageInstance} {...routeProps} />
+                )}
+              </Route> 
+            */}
 
-            <Route path="/adverts" component={LoginPage} />
+            <Route path="/adverts" component={AdvertsPage} />
 
             <Route exact path="/">
               <Redirect to="/adverts" />
