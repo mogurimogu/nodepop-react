@@ -2,8 +2,9 @@ import "./styles/index.scss";
 import { useState } from "react";
 import { login } from "./service";
 import Loading from "../common/Loading";
+import { AuthContextConsumer } from "./context";
 
-export default function LoginPage({ onLogin }) {
+function LoginPage({ onLogin }) {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,3 +77,11 @@ export default function LoginPage({ onLogin }) {
     </div>
   );
 }
+
+const ConnectedLoginPage = () => (
+  <AuthContextConsumer>
+    {auth => <LoginPage onLogin={auth.handleLogin} />}
+  </AuthContextConsumer>
+);
+
+export default ConnectedLoginPage;
