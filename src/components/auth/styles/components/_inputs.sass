@@ -1,0 +1,38 @@
+input
+   padding: 1rem
+   border: none
+   width: 100%
+   border-bottom: 3px solid $input-bg
+   margin: 0.5rem
+   border-radius: 0.3rem
+   &:focus
+      border-bottom: 3px solid $primary-color
+      outline: none
+   &.error
+      border-bottom: 3px solid $error-color
+label
+   display: flex
+   width: 100%
+   align-items: center
+   justify-content: center
+   margin-bottom: 0.5rem
+
+   input
+      width: auto
+
+button[type="submit"]
+   margin: 0
+   background-color: $primary-color
+   transition: all 0.3s ease
+   font-weight: bold
+   border-radius: 0 0 5px 5px
+   width: 100%
+   border: none
+   padding: 0.7rem
+   &:hover
+      background-color: darken($primary-color, 10%)
+   &:disabled
+      cursor: auto
+      opacity: 80%
+      &:hover
+         background-color: $primary-color
