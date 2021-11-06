@@ -29,7 +29,11 @@ function App({ isInitiallyLogged }) {
         <div className="app">
           <Switch>
             <Route path="/login">
-              {(routeProps) => <LoginPage {...routeProps} />}
+              {isLogged ? (
+                <Redirect to="/" />
+              ) : (
+                (routeProps) => <LoginPage {...routeProps} />
+              )}
             </Route>
 
             <PrivateRoute path="/new-advert">

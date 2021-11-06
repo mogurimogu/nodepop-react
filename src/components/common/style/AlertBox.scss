@@ -1,0 +1,18 @@
+@import '../../styles/index.scss';
+
+.alert{
+    width: 400px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #eaeaea;
+    border: 1px solid darken($color: #eaeaea, $amount: 10);
+    opacity: 0.9;
+    cursor: pointer;
+    &.error{
+        background-color: lighten($error-color , $amount: 40);
+        border-color: $error-color;
+        color: $error-color;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+}

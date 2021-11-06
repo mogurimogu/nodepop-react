@@ -1,13 +1,15 @@
+import T from "prop-types";
 import "./styles/index.scss";
 import { useState } from "react";
 import { login } from "./service";
-import Loading from "../common/Loading";
 import { AuthContextConsumer } from "./context";
+import { AlertBox, Loading } from "../common/";
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, history, location }) {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [remember, setRemember] = useState(false);
 
   const resetError = () => setError(null);
 
@@ -17,9 +19,11 @@ function LoginPage({ onLogin }) {
     setIsLoading(true);
     resetError();
     try {
-      await login(formData);
+      await login(formData, remember);
       setIsLoading(false);
       onLogin();
+      const { from } = location.state || { from: { pathname: "/" } };
+      history.replace(from);
     } catch (error) {
       setError(error);
       setIsLoading(false);
@@ -59,7 +63,11 @@ function LoginPage({ onLogin }) {
             required
           />
           <label>
-            <input type="checkbox" /> Mantener sesión abierta
+            <input
+              type="checkbox"
+              onChange={(event) => setRemember(event.target.checked)}
+            />
+            Mantener sesión abierta
           </label>
           <button
             type="submit"
@@ -69,18 +77,18 @@ function LoginPage({ onLogin }) {
           </button>
         </form>
       )}
-      {error && (
-        <div onClick={resetError} className="loginPage-error">
-          {error.message}
-        </div>
-      )}
+      {error && <AlertBox onClick={resetError}>{error.message}</AlertBox>}
     </div>
   );
 }
 
-const ConnectedLoginPage = () => (
+LoginPage.propTypes = {
+  onLogin: T.func.isRequired,
+};
+
+const ConnectedLoginPage = (props) => (
   <AuthContextConsumer>
-    {auth => <LoginPage onLogin={auth.handleLogin} />}
+    {(auth) => <LoginPage onLogin={auth.handleLogin} {...props} />}
   </AuthContextConsumer>
 );
 

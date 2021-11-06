@@ -1,5 +1,11 @@
+import Layout from "../../layout/Layout";
+
 function AdvertsPage(){
-    return('Advert page')
+    return(
+        <Layout>
+            
+        </Layout>
+    )
 }
 
 export default AdvertsPage;
