@@ -1,0 +1,60 @@
+@import "../../styles/index.scss";
+
+.product {
+  position: relative;
+  max-width: 300px;
+  display: inline-block;
+  & a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  & .card {
+    display: block;
+    border-radius: 1rem;
+    overflow: hidden;
+    color: darken($color: $primary-color, $amount: 20);
+    opacity: 1;
+    transition: 0.3s ease all;
+    &:hover {
+      opacity: 0.8;
+    }
+    & .photo {
+      display: flex;
+    }
+  }
+  & .info {
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+    border-top: 5px solid $primary-color;
+    background-color: rgb(240, 240, 240);
+    border-radius: 0 0 1rem 1rem;
+    & .offer {
+      font-size: 1.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & .price {
+        font-weight: bold;
+      }
+    }
+  }
+  & .tags {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  & .tag {
+    pointer-events: fill;
+    background-color: darken($color: $primary-color, $amount: 10);
+    margin: 0.5rem;
+    padding: 5px 10px;
+    border-radius: 1rem;
+    color: white;
+    transition: 0.3s ease all;
+    &:hover {
+      background-color: lighten($color: $primary-color, $amount: 30);
+      color: darken($color: $primary-color, $amount: 20);
+    }
+  }
+}

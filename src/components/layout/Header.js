@@ -14,7 +14,7 @@ function Header() {
         {isLogged ? (
           <div>
             <Link to="/new-ad">
-              <button>nuevo</button>
+              <button>➕</button>
             </Link>
             <button onClick={handleLogout}>Salir</button>
           </div>

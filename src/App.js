@@ -36,7 +36,7 @@ function App({ isInitiallyLogged }) {
               )}
             </Route>
 
-            <PrivateRoute path="/new-advert">
+            <PrivateRoute path="/new-ad">
               <NewAdPage />
             </PrivateRoute>
 
@@ -48,7 +48,7 @@ function App({ isInitiallyLogged }) {
               </Route> 
             */}
 
-            <Route path="/adverts" component={AdvertsPage} />
+            <PrivateRoute path="/adverts" component={AdvertsPage} />
 
             <Route exact path="/">
               <Redirect to="/adverts" />

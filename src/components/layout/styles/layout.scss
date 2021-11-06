@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+
+#new-ad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & form{
+        max-width: 800px;
+        width: 100%;
+        & input{
+            font-size: 1.3em;
+        }
+        & select{
+            width: 100%;
+            margin: 0.5rem;
+            font-size: 1.3em;
+            padding: 0.5rem;
+            border: 3px solid darken($color: $primary-color, $amount: 10);
+            border-radius: 5px;
+            background-color: white;
+            color: darken($color: $primary-color, $amount: 10);
+        }
+        & button{
+            font-size: 1.3em;
+            font-weight: 300;
+            cursor: pointer;
+        }
+    }
+}
