@@ -22,7 +22,7 @@ function AdvertsPage({ history, ...props }) {
   }, []);
 
   return (
-    <Layout {...props}>
+    <Layout {...props} idPage="adverts-page">
       {adverts.length ? (
         <ul className="product-list">
           {adverts.map(({...product }) => (

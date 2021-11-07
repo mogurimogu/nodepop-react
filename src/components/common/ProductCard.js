@@ -4,10 +4,10 @@ import "./style/ProductCard.scss";
 function ProductCard({ ...product }) {
   return (
     <article className="product" key={product.id}>
-      <Link to={`/adverts/:${product.id}`} className="card">
+      <Link to={`/adverts/${product.id}`} className="card">
         <div className="photo">
           {product.photo ? (
-            <img src={product.photo} alt={product.productName} />
+            <img src={`${process.env.REACT_APP_API_BASE_URL}${product.photo}`} alt={product.productName} />
           ) : (
             <img
               src="https://via.placeholder.com/500x400.png/7fecd1/00674c/?text=Nodepop"

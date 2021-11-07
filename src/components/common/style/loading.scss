@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .lds-ripple {
   display: inline-block;
   position: relative;
@@ -11,6 +13,11 @@
   border-radius: 50%;
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
+
+.lds-ripple.nodepop div{
+  border: 4px solid $primary-color;
+}
+
 .lds-ripple div:nth-child(2) {
   animation-delay: -0.5s;
 }

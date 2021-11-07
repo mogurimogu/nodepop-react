@@ -1,9 +1,9 @@
 import React from "react";
-import "./style/loading.scss"
+import "./style/loading.scss";
 
-export default function Loading() {
+export default function Loading(extraclass) {
   return (
-    <div class="lds-ripple">
+    <div className={`lds-ripple ${extraclass.extraClass} `}>
       <div></div>
       <div></div>
     </div>

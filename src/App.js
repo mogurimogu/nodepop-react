@@ -11,6 +11,7 @@ import { AdvertsPage, NewAdPage } from "./components/adverts/";
 import { AuthContextProvider } from "./components/auth/context";
 import { useState } from "react";
 import { logout } from "./components/auth/service";
+import AdvertPage from "./components/adverts/AdvertPage/AdvertPage";
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -40,13 +41,11 @@ function App({ isInitiallyLogged }) {
               <NewAdPage />
             </PrivateRoute>
 
-            {/* 
-              <Route path="/tweets/:tweetId">
-                {(routeProps) => (
-                  <TweetPage ref={tweetPageInstance} {...routeProps} />
-                )}
-              </Route> 
-            */}
+            <Route path="/adverts/:advertId">
+              {routeProps => (
+                <AdvertPage {...routeProps} />
+              )}
+            </Route>
 
             <PrivateRoute path="/adverts" component={AdvertsPage} />
 
