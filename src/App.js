@@ -41,11 +41,11 @@ function App({ isInitiallyLogged }) {
               <NewAdPage />
             </PrivateRoute>
 
-            <Route path="/adverts/:advertId">
+            <PrivateRoute path="/adverts/:advertId">
               {routeProps => (
                 <AdvertPage {...routeProps} />
               )}
-            </Route>
+            </PrivateRoute>
 
             <PrivateRoute path="/adverts" component={AdvertsPage} />
 

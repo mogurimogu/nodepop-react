@@ -2,7 +2,6 @@ import { useState } from "react";
 import { getFilteredAds } from "../service";
 
 function AdvertFilter(props) {
-  const [product, setProduct] = useState(props.selectedAds);
   const [filter, setFilter] = useState({
     name: "",
     priceMin: "",

@@ -8,17 +8,23 @@ function AdvertPage({ history, ...props }) {
   const [product, setProduct] = useState();
 
   const advertId = useParams(history).advertId;
+
   useEffect(() => {
     async function getAd() {
       try {
         const ad = await getAdverts(advertId);
         setProduct(ad);
       } catch (error) {
-        console.error(error);
+        if (error.status === 404){
+          history.replace('/404')
+        }else if(error.status === 401){
+          history.replace('/login')
+        }
+        console.error(error.message);
       }
     }
     getAd();
-  }, [advertId]);
+  }, [advertId, history]);
 
   const handleDelete = () => {
     if (window.confirm('¿seguro que desea eliminar el producto?')){
@@ -34,7 +40,7 @@ function AdvertPage({ history, ...props }) {
       </button>
     </Layout>
   ) : (
-    <Layout>No ha cargado el producto <br/>
+    <Layout>No se ha podido cargar el producto <br/>
     Compruebe que su navegador no esté bloqueando los recursos</Layout>
   );
 }
