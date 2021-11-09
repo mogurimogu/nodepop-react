@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ProductCard } from "../../common";
 import Layout from "../../layout/Layout";
-import { getAdverts } from "../service";
+import { deleteAdvert, getAdverts } from "../service";
 
 function AdvertPage({ history, ...props }) {
   const [product, setProduct] = useState();
@@ -16,16 +16,26 @@ function AdvertPage({ history, ...props }) {
       } catch (error) {
         console.error(error);
       }
-    };
-    getAd()
-}, [advertId]);
+    }
+    getAd();
+  }, [advertId]);
 
+  const handleDelete = () => {
+    if (window.confirm('¿seguro que desea eliminar el producto?')){
+      deleteAdvert(advertId).then(() => history.push('/'))
+    }
+  }
+  
   return product ? (
-    <Layout>
+    <Layout idPage="advert-page">
       <ProductCard {...product} />
+      <button className="delete" onClick={handleDelete}>
+        Eliminar
+      </button>
     </Layout>
   ) : (
-    <Layout>No ha cargado el producto</Layout>
+    <Layout>No ha cargado el producto <br/>
+    Compruebe que su navegador no esté bloqueando los recursos</Layout>
   );
 }
 

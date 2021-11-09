@@ -37,3 +37,27 @@
       margin: 0.5rem;
   }
 }
+
+#advert-page{
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  flex-flow: column;
+  transform: scale();
+  & .product{
+    max-width: 600px;
+    margin-bottom: 1rem;
+  }
+  & .delete{
+    background-color: $error-color;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: 0.3s ease all;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
